@@ -25,3 +25,7 @@ output_parser = StrOutputParser()
 # create a vector store and embeddings
 vectorstore = FAISS.from_texts(["harrison worked on kensho"], embedding=OpenAIEmbeddings())
 
+# querying the vector store
+query = "Where did Harrison work?"
+docs = vectorstore.similarity_search(query, top_k=1)
+print(docs[0].page_content)
